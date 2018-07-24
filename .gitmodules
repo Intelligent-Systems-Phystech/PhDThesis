@@ -1,0 +1,6 @@
+[submodule "Bakhteev2019/doc"]
+	path = Bakhteev2019/doc
+	url = https://github.com/bahleg/tex_phd
+[submodule "Bakhteev2019/slides"]
+	path = Bakhteev2019/slides
+	url = https://github.com/bahleg/tex_slides
