@@ -1,0 +1,30 @@
+import theano
+import theano.tensor as T
+import numpy as np
+import random 
+def greed_optimize(trainig_criterion, model_constructor, param_optimizer, trial_num, train_iteration_num, X_data, Y_data, hyperparams, hyperparams_range,  verbose=True):
+ 
+    best = []
+    best_score = -np.inf
+    X = T.matrix()
+    Y = T.vector(dtype=Y_data.dtype)
+    do_train, do_validation,  params,  cost, predict, updates = trainig_criterion( model_constructor, param_optimizer,X_data, Y_data,X=X, Y=Y )
+    
+        
+        
+        for i in xrange(train_iteration_num):
+            res = do_train()
+            
+            if verbose and i%1000==0:
+                print 'trial {0} iteration {1}, internal loss={2}'.format(str(trial), str(i), str(res))
+        score = do_validation()
+        if verbose:
+                print 'score {0} vs best {1}'.format(str(score), str(best_score))
+        if score>best_score:
+            best_score = score
+            best = hyp_value[:]
+    return best 
+        
+        
+    
+    
