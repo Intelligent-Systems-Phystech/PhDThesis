@@ -1,0 +1,240 @@
+\documentclass[12pt]{article}
+%\usepackage{jmlda}
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage{amsmath,amssymb,mathrsfs,mathtext}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{a4wide}
+\begin{document}
+\title{Systems and means of deep learning for classification problems \thanks{This project is supported by RFBR, grant 16-37-00488}}
+\date{}
+\maketitle
+
+ \begin{center}
+ O. Yu.~Bakhteev\footnote{Moscow Institute of Physics and Technology, bakhteev@phystech.edu}, 
+ M.\,S.~Popova\footnote{Ìîñêîâñêèé ôèçèêî-òåõíè÷åñêèé èíñòèòóò, maria\_popova@phystech.edu}, 
+ V.\,V.~Strijov\footnote{Dorodnicyn Computing Centre, CSC IC RAS, strijov@ccas.ru}
+ \end{center}
+
+\textbf{Annotation:} The paper provides a guidance on deep learning net construction and optimization using GPU. The paper proposes to use GPU-instances on the cloud platform Amazon Web Services. The problem of time series classification is considered. The paper proposes to use a deep learning net, i.e. a multilevel superposition of models, belonging to the following classes: Restricted Boltzman Machines, autoencoders and neural nets with softmax-function in output. The proposed method was tested on a dataset containing time segments from mobile phone accelerometer. The analysis of relation between classification error, dataset size and superposition parameter amount is conducted. 
+
+\bigskip
+{\bf Keywords}: time series classification; deep learning; model superposition; autoencoder; restricted Boltzmann machine; cloud service
+
+\begin{thebibliography}{10}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\language\csname l@#1\endcsname\fi}
+\ifx\undefined\url\def\url#1{{\small #1}}\else\fi
+\ifx\undefined\BibAuthor\def\BibAuthor#1{\emph{#1}}\else\fi
+\ifx\undefined\BibTitle\def\BibTitle#1{#1}\else\fi
+\ifx\undefined\BibUrl\def\BibUrl#1{\url{#1}}\else\fi
+\ifx\undefined\BibAnnote\def\BibAnnote#1{}\else\fi
+\ifx\undefined\BibSection\def\BibSection#1#2#3{}\else\fi
+
+\bibitem{foundamentals}
+ {Cho, K.}
+2014. Doctoral dissertation {Foundations and Advances in Deep Learning}. Espoo: Aalto University.~277~p.
+
+%http://www.diva-portal.org/smash/get/diva2:710518/FULLTEXT02
+\bibitem{ts1}
+ {Langkvist, M., L. Karlsson and A. Loutfi.}
+2014. A review of unsupervised feature learning for time-series modelling. \emph{Pattern Recognition Letters}.~42(1):~11-24. 
+
+%http://tdesell.cs.und.edu/papers/2015_evocop.pdf
+\bibitem{ts2}
+ {Desell, T., S. Clachar, J. Higgins and B. Wild.}
+2015. Evolving Deep Recurrent Neural Networks Using Ant
+Colony Optimization. \emph{Evolutionary Computation in Combinatorial Optimization}.~9026:~86-98. 
+
+\bibitem{ts3}
+ {Popova, M. S. and V. V. Strijov}
+2015. Building superposition of deep learning neural networks
+for solving the problem of time series classification. \emph{Systems and Means of Informatics}.~25(3):~60-77.
+
+
+%http://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf
+\bibitem{reg1}
+{Srivastava, N., G. Hinton, A. Krizhevsky, I. Sutskever and R. Salakhutdinov. }
+2014. Dropout: A Simple Way to Prevent Neural Networks from
+Overfitting. \emph{Journal of Machine Learning Research}.~15:~1929-1958.
+
+%http://papers.nips.cc/paper/4882-dropout-training-as-adaptive-regularization.pdf
+\bibitem{reg2}
+{Wager, S., S. Wang and P. Liang.}
+2013. Dropout Training as Adaptive Regularization. \emph{Advances in Neural Information Processing Systems}.~\mbox{26:~{351-359}}. 
+
+%http://arxiv.org/pdf/1506.02142v1.pdf
+\bibitem{reg3}
+{Gal, Y. and Z. Ghahramani}
+2015. Dropout as a Bayesian Approximation:
+Representing Model Uncertainty in Deep Learning. \emph{arXiv preprint arXiv:1506.02142}. Available at: http://arxiv.org/abs/1506.02142 (accessed November 25, 2015).
+
+%Regularization of Neural Networks using DropConnect
+\bibitem{reg4}
+{Wan, L., M. Zeiler, S. Zhang, Y. LeCun and R. Fergus. }
+2013. Regularization of Neural Networks using DropConnect. \emph{Proceedings of the 30th International Conference on Machine Learning (ICML-13)}.~1058-1066.
+
+
+%http://arxiv.org/pdf/1312.6199v4.pdf
+\bibitem{stab1}
+{Szegedy, C., 
+W. Zaremba,
+I. Sutskever, 
+J. Bruna, 
+D. Erhan, 
+I. Goodfellow and 
+R. Fergus.}
+2014. Intriguing properties of neural networks.  \emph{arXiv preprint arXiv:1312.6199}. Available at: http://arxiv.org/abs/1312.6199 (accessed November 25, 2015).
+
+%http://ai.stanford.edu/~ang/papers/nips09-MeasuringInvariancesDeepNetworks.pdf
+\bibitem{stab2}
+{Goodfellow, I. J., Q. V. Le, A. M. Saxe, H. Lee and A. Y. Ng.}
+2009. Measuring Invariances in Deep Networks. \emph{Advances in Neural Information Processing Systems}.~22:~646--654.
+
+
+%http://machinelearning.wustl.edu/mlpapers/paper_files/AISTATS2012_RaikoVL12.pdf
+\bibitem{speed1}
+{Raiko, T., H. Valpola and Y. LeCun.}
+2012. Deep Learning Made Easier by Linear Transformations in
+Perceptrons. \emph{Journal of Machine Learning Research - Workshop and Conference Proceedings}.~22:~924-932.
+
+%http://arxiv.org/pdf/1306.1091.pdf
+\bibitem{speed2}
+{Bengio, Y., E. Laufer, G. Alain and G. Yosinski. }
+2014. Deep Generative Stochastic Networks Trainable by Backprop. \emph{Proceedings of The 31st International Conference on Machine Learning}.~226–234.
+
+%http://arxiv.org/pdf/1502.03167.pdf
+\bibitem{speed3}
+{Ioffe, S. and C. Szegedy.}
+2015. Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. \emph{arXiv preprint arXiv:1502.03167}. Available at: http://arxiv.org/abs/1502.03167 (accessed November 25, 2015).
+
+%http://www.cv-foundation.org/openaccess/content_cvpr_2013/papers/Li_Learning_Locally-Adaptive_Decision_2013_CVPR_paper.pdf
+\bibitem{ada}
+{Li, Z., C. Chang, F. Liang, T. S. Huang, C. Cao and J. R. Smith.}
+2013. Learning Locally-Adaptive Decision Functions for Person Verification. \emph{Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on}. 3610-3617.
+
+%http://www.uoguelph.ca/~gwtaylor/publications/nips2008/rtrbm.pdf
+\bibitem{recrbm}
+{Sutskever, I., G. Hinton and G. Taylor.}
+2009. The Recurrent Temporal Restricted Boltzmann
+Machine. \emph{Advances in Neural Information Processing Systems}.~21:~1601-1608.
+
+%ahttp://image.diku.dk/igel/paper/TRBMAI.pdf
+\bibitem{rbm}
+ {Fischer, A. and C. Igel.}
+2014. Training Restricted Boltzmann Machines: An Introduction. \emph{Pattern Recognition}. 47:~25-39.
+
+%http://papers.nips.cc/paper/4204-dynamic-pooling-and-unfolding-recursive-autoencoders-for-paraphrase-detection.pdf
+\bibitem{rae}
+{Socher, R., E. H. Huang, J. Pennington, A. Y. Ng and C. D. Manning. }
+2011. Dynamic Pooling and Unfolding Recursive Autoencoders for Paraphrase Detection. \emph{Advances in Neural Information Processing Systems 24}.~801-809.
+
+%Sparse Autoencoders for Word Decoding from Magnetoencephalography
+\bibitem{sparse}
+{Shu, M. and F. Fyshe.}
+2013. Sparse Autoencoders for Word Decoding from Magnetoencephalography. \emph{Proceedings of the third NIPS Workshop on Machine Learning and Interpretation in NeuroImaging (MLINI)}. Available at: http://www.cs.cmu.edu/$\sim$afyshe/papers/SparseAE.pdf
+(accessed November 25, 2015).
+
+%http://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf
+\bibitem{denoise}
+{Vincent, P., H. Larochelle, I. Lajoie, Y. Bengio and 
+P. Manzagol.}
+2013. Stacked Denoising Autoencoders: Learning Useful Representations in
+a Deep Network with a Local Denoising Criterion. \emph{The Journal of Machine Learning Research}.~11:~3371-3408.
+
+\bibitem{wisdm}
+{Kwapisz, J. R., G. M. Weiss and S. Moore.}
+2010. Activity recognition using cell phone
+accelerometers. \emph{SIGKDD Explorations}.~12(2):~74-82.
+
+%. “Theano: new features and speed improvements”. NIPS 2012 deep learning workshop. (BibTex)
+\bibitem{theano1}
+{Bastien, F., P. Lamblin, R. Pascanu, J. Bergstra, I. Goodfellow, A. Bergeron, N. Bouchard, D. Warde-Farley and Y. Bengio.}
+2012. Theano: new features and speed improvements. \emph{Deep Learning and Unsupervised Feature Learning NIPS 2012 Workshop}. Available at:  http://arxiv.org/pdf/1211.5590v1.pdf
+(accessed November 25, 2015).
+%J. Bergstra, O. Breuleux, F. Bastien, P. Lamblin, R. Pascanu, G. Desjardins, J. Turian, D. Warde-Farley and Y. Bengio. “Theano: A CPU and GPU Math Expression Compiler”. Proceedings of the Python for Scientific Computing Conference (SciPy) 2010. June 30 - July 3, Austin, TX (BibTeX)
+\bibitem{theano2}
+{Bergstra, J., O. Breuleux, F. Bastien, P. Lamblin, R. Pascanu, G. Desjardins, J. Turian, D. Warde-Farley and Y. Bengio.}
+2010. Theano: a {CPU} and {GPU} Math Expression Compiler. \emph{Proceedings of the Python for Scientific Computing Conference ({SciPy})}. 3-11.
+
+\bibitem{pylearn}
+{Goodfellow, I. J., D. Warde-Farley, P. Lamblin, V. Dumoulin, M. Mirza, R. Pascanu, J. Bergstra, F. Bastien and Y. Bengio.}
+2013. Pylearn2: a machine learning research library. \emph{arXiv preprint arXiv:1308.4214}. Available at: http://arxiv.org/abs/1308.4214 (accessed November 25, 2015).
+
+\bibitem{lasagne}
+{Dieleman, S., J. Schl?ter, C. Raffel et al.}
+2015. {Lasagne: First release.}
+Aug. 2015. Available at: http://dx.doi.org/10.5281/zenodo.27878 (accessed November 25, 2015).
+
+\bibitem{cuda}
+%https://devtalk.nvidia.com/default/topic/521083/canonical-citation-reference-for-cuda/
+{Nickolls, J., I. Buck, M. Garland and K. Skadron.}
+2008. Scalable Parallel Programming with CUDA. \emph{ACM Queue}. 6(2): 40-53.
+
+%http://dl.acm.org/citation.cfm?id=1803953
+\bibitem{cl}
+{Stone, J. E., D. Gohara and G. Shi.}
+2010. OpenCL: A Parallel Programming Standard for Heterogeneous Computing Systems.
+\emph{Journal
+IEEE Design \& Test}. 12(10): 66-73.
+
+%http://jmlr.org/papers/volume11/erhan10a/erhan10a.pdf
+\bibitem{fine}
+{Erhan, D., 
+Y. Bengio,
+A. Courville,
+P. Manzagol and 
+P. Vincent.}
+2010. Why Does Unsupervised Pre-training Help Deep Learning? \emph{The Journal of Machine Learning Research}. 11: 625-660.
+
+
+%http://www.gatsby.ucl.ac.uk/~chuwei/paper/smc.pdf
+\bibitem{nnl}
+{ Duan, K., S. S. Keerthi, W. Chu, S. K. Shevade and A. N. 
+Poo.}
+2003. Multi-Category Classification by Soft-Max
+Combination of Binary Classifiers. \emph{The
+fourth international workshop on multiple classifier systems}. 125-134.
+
+
+%https://users.ics.aalto.fi/praiko/papers/nips11Cho.pdf
+\bibitem{gbrbm}
+{Cho, K., T. Raiko and A. Ilin.}
+2013. Gaussian-Bernoulli Deep Boltzmann Machine. \emph{The 2013 International Joint Conference on Neural Networks (IJCNN)}. 1-7. 
+
+%http://www.mitpressjournals.org/doi/pdf/10.1162/neco.2006.18.7.1527
+\bibitem{sm}
+{Hinton, G. E., S. Osindero and Y. Teh.}
+2006. A Fast Learning Algorithm for Deep Belief Nets. \emph{Neural Computation}. 18: 1527–1554.
+
+%http://stackoverflow.com/questions/2549035/do-you-get-charged-for-a-stopped-instance-on-ec2
+\bibitem{bug}
+Available at: http://stackoverflow.com/questions/2549035/do-you-get-charged-for-a-stopped-instance-on-ec2 (accessed November 25, 2015).
+
+
+\bibitem{console}
+Available at: https://us-west-2.console.aws.amazon.com/console/ (accessed November 25, 2015).
+
+\bibitem{cv}
+{Bishop, C. M.,}
+eds. 2006. Pattern Recognition and Machine Learning. Springer-Verlag New York. 738 p.
+
+
+%URL:http://www.researchgate.net/profile/Marco_Locatelli/publication/227102777_Machine_learning_for_global_optimization/links/0c96053b561d2cf6c1000000.pdf
+\bibitem{multi}
+{Cassioli, A., D. D. Lorenzo, M. Locatelli, F. Schoen and Sciandrone, M.}
+2012. Machine Learning for Global Optimization. \emph{Computational Optimization and Applications}. 1(1): 279-303.
+
+\bibitem{svn}
+{Bakhteev,~Î.~Yu.}~2016. Deep learning software.
+Available at:  https://svn.code.sf.net/p/mlalgorithms/code/Group074/Bakhteev2015TheanoCuda/code/ (accessed November 25, 2015).
+
+\bibitem{source_popova}
+{Popova,~M.~S.} 2015. Deep learning software.
+Available at: https://svn.code.sf.net/p/mlalgorithms/code/Group174/Popova2015DeepLearning/ (accessed November 25, 2015).
+\end{thebibliography}
+\end{document}
