@@ -1,0 +1,82 @@
+reviewer1 :
+
+The paper under review mainly concerns numerical implementation of gradient–based hyperparameter optimization algorithms. In terms of various aspects such as datasets, modes selection criteria, the problem is analysed
+numerically.
+Overall, the paper under review seems interesting in the terms of comparison of various algorithms. Although its
+content and the proposed topics are suitable for the Journal, the manuscript presents some drawbacks. Especially,
+this concerns spelling, language, inaccurate choice or omission of mathematical symbols and so on. Some various
+issues should be addressed and clarified before the publication of this paper.
+Below some comments and suggestions can be found.
+
+• Page 2, line 9: leave space before [31]+
+
+• Page 2, lines 29-31: The authors claim that ”The main theoretical impact of the paper ....” However, there is
+no theoretical contribution of this paper. - убрал theoretical
+
+• Page 2, line 36: ”The experimental results show that the gradient–based algorithms are significantly more
+effective ...” Please, make comparison clearly. It is better comparatively what? +
+
+• Introduction part: Please, use simple tense or future tense if you are mentioning the work presented in this
+paper. For instance, ”The excrements are conducted ...” in page 2, line 31. 0___о
+
+• Page 3, lines 29-31: The subjects are missing after ”In [9] and [26]”+
+
+• Page 3, lines 34-45: In this paragraph, the related works are mentioned. Because of that, it can be more
+suitable to use past tense instead of simple tense.+
+
+• Page, lines 46-50: Please, rewrite this paragraph. It is not easy to understand +.
+
+• Page 5 and 6: The well–known methods, cross–validation and evidence lowerbound, are introduced. Please,
+give the necessary references.+
+
+• Page 6, line 46: How do you solve the optimization problem (14)? Please, give more details. rewriten
+
+• Page 8, line 23: All computations are done by using test data? If so, why do you need train data?+
+
+• Numerical part: All results are presented as report but this is a academic paper. Please, use simple tense
+instead of past tense.+
+
+• Page 8, line 24: ”For each dataset and each algorithm we ran 5 optimizations.” I could not understand what
+you want to mean. Please, specify more clearly.+
+
+• Page 9, line 4: ” For the loss function and validation ...” I think ”and” seems extra or check the sentence again.+
+
+• Page 9, line 10: Typo mistake ”neurla”+
+
+• Numerical Part: Please, use marker for all figures. It is not easy to understand for white/black prints.+
+
+• Page 9: There is no reference to Figure 1 in the manuscript.+
+
+• Page 10: Please, give necessary references for the synthetic dataset, WISDM, and MNIST datasets.???
+
+• Page 10, line 14: Typo mistake, ”polynoms”+
+
+• Page 10, lines 14-15: Please, give more explanation related to Figure 2.+
+
+• Page 11: Add the name of y-axis in right part of Figure 3.+
+
+• Page 12: There is no reference to Table 3 in the manuscript.+
+
+• Some part of discussion and conclusion sections seems the same. I suggest to remove one of them.???
+
+• Discussion or Conclusion parts: I suggest the use of present perfect or simple tense instead of the past tense.+
+
+• Page 13, line 45: It should be ”i.e.,” wow+
+
+• Page 14, lines 25-26: The authors give information about the implementation. Please, add them to introduction
+of the numerical section.+
+
+• Please, use the same structure for naming the journals, such as full name or abbreviation.
+2
+
+
+
+Reviewer #2: The paper presents very interesting results on hyperparameter optimization. The proposed algorithms based on the gradient-basis approach are analysed and tested. The algorithms are implemented in the form of a toolbox in Python programming language and are of open access. Thepros and contras of the proposed algorithms are discussed.
+
+On my opinion, the paper deserves to be published in the Annals of Operatins Research. But I  recommend the authors to test the English presentation of the paper from the point of grammar, use of the definite and indefinite articles, the order of the words in sentences.
+
+Also, I suggest to be more carefull with the notations used in the paper. Thus,in section 2, "Problem statement" , it is not clear the construction of the object matrix $\bold X$ and the label vector $\bold y$ and their connectin with the elements of the dataset; it is not clear why the same letter, f, is used for the model and for the functions introduced in (2) and (3). 
+
+The list of references should be presented in the same style. In reference [13], the title of the journal, as well as all other data, are missing. In reference[30], it is mentioned (dsc thesis) and PhD thesis. In reference [33], the year 2015 is mentioned three times in the same reference.
+
+
