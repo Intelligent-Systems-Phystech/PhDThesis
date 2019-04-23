@@ -148,7 +148,7 @@ The other model selection criterion is the cross-validation~\cite{cv_ms,tokmakov
 \label{prob_stat}
 There is given a dataset \begin{equation}\label{eq:dataset}\mathfrak{D} = \{(\mathbf{x}_i,y_i)\}, i = 1,\dots,m.\end{equation} It contains the object matrix $\mathbf{X}$ and the label vector  $\mathbf{y}$. The label  ${y_i}$ is in finite set, ${y}_i \in \mathbb{Y} = \{1, \dots, Z\}$, in case of $Z$-class classification problem. For the regression problem the label $y_i$ is in the real-value subset ${y_i} \in \mathbb{Y} \subset  \mathbb{R}$.
 
-A model $f$ predicts the variable~$y_i$:
+A model $\mathbf{f}$ predicts the variable~$y_i$:
 \[
 	f:\mathbb{R}^n \to \mathbb{Y}, \quad \mathbf{w} \in \mathbb{R}^u.
 \]
@@ -160,7 +160,7 @@ Introduce the probabilistic interpretation of the model $f$ for the classificati
 Suppose the dependent variable $y$ is normally distributed:
 \begin{equation}
 \label{eq:reg}
-\mathbf{y} = \mathcal{N}\bigl(\mathbf{f}, \mathbf{I}\bigr),\quad \text{where }\mathbf{f} = \mathbf{f}(\mathbf{w}, \mathbf{X}).
+\mathbf{y} = \mathcal{N}\bigl(\mathbf{f}, \mathbf{I}\bigr),\quad \text{where }\mathbf{f} = \mathbf{f}(\mathbf{w}, \mathbf{X}) = [f(\mathbf{w}, \mathbf{x}_1),\dots,f(\mathbf{w}, \mathbf{x}_m].
 \end{equation}
 
 
@@ -320,17 +320,17 @@ Redefine the optimization problem according to the definition of operator $T$:
 \label{eq:optim}
 	\hat{\mathbf{A}} = \argmax_{\text{diag}(\mathbf{A}) \in \mathbb{R}^n} Q\bigl( T^\eta(\boldsymbol{\theta}_0, \mathbf{A})\bigr).
 \end{equation}
-\textbf{
-The general scheme of the hyperparameter optimization is the following:}
+
+The general scheme of the hyperparameter optimization is the following:
 \begin{enumerate}
 \item in range from 1 to  $l$, where $l$ is the number of the hyperparameter optimization iterations:
 \item initialize parameters $\boldsymbol{\theta}$;
 \item solve optimization problem~\eqref{eq:optim} and obtain the new hyperparameter values $\mathbf{A}'$;
 \item set $\mathbf{A} = \mathbf{A}'$.
 \end{enumerate}
-\textbf{
-The exact gradient calculation $\nabla_{\mathbf{A}} Q( T^\eta(\boldsymbol{\theta}_0, \mathbf{A}))$ is intractable because of the inner optimization operator $T$. Therefore the number of approximated solutions were presented. Their main properties are listed in Table~\ref{table:algo_descr2}. An example of the parameter and hyperparameter update with different hyperparameter optimization algortihms is illustrated in~\ref{fig:traj}.
-}
+
+The exact gradient calculation $\nabla_{\mathbf{A}} Q( T^\eta(\boldsymbol{\theta}_0, \mathbf{A}))$ is intractable because of the inner optimization operator $T$. Therefore the number of approximated solutions were presented. Their main properties are listed in Table~\ref{table:algo_descr2}. An example of the parameter and hyperparameter update with different hyperparameter optimization algortihms is illustrated in Fig.~\ref{fig:traj}.
+
 \begin{table}
 \small
 
@@ -466,7 +466,7 @@ We calibrate the hyperparameter learning rate $\gamma_{\mathbf{A}}$  for each al
     a_\text{min} \leq  \min(\mathbf{A}), \quad \max(\mathbf{A}) \leq b_\text{max},
 \] 
 where $a_\text{min} = -2.5, b_\text{max}=10.5$ for the synthetic dataset and $a_\text{min} = -5, b_\text{max}=11$ for the WISDM and MNIST datasets. We calibrate $\gamma_\mathbf{A}$ with a small amount of iterations: $l=50$ for the syntetic dataset, $l=10$ for the WISDM and $l=5$ for the MNIST dataset. Whenever each algorithm shows instability in further experiments (gradient explosion or overflow) we lower the value of $\gamma_{\mathbf{A}}$. The parameter $\tau_\text{step}$ is set to $1$ for syntetic dataset and WISDM and  $\tau_\text{step}=10$ for the MNIST dataset.
-\textbf{The overall results are presented in~\ref{table:table}.} The implementation of the proposed algorithms is available at~\cite{pyfos}.
+The overall results are presented in Table~\ref{table:table}. The implementation of the proposed algorithms is available at~\cite{pyfos}.
 
 
 \paragraph{Synthetic dataset.}
