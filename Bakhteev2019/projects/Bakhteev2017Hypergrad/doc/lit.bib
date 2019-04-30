@@ -1,10 +1,8 @@
-@inproceedings{hyper, 
-   Publisher = {JMLR Workshop and Conference Proceedings}, 
+@inproceedings{hyper,  
    title="Gradient-based Hyperparameter Optimization through Reversible Learning", 
-   Author={Maclaurin, Dougal and Duvenaud, David and Adams, Ryan}, 
+   author={Maclaurin, Dougal and Duvenaud, David and Adams, Ryan}, 
    year="2015", 
-   Booktitle="Proceedings of the 32nd International Conference on Machine Learning (ICML-15)", 
-   Editor={David Blei and Francis Bach}, 
+   booktitle="Proceedings of the 32nd International Conference on Machine Learning (ICML-15)", 
    pages={2113-2122}
    }
 
@@ -28,23 +26,11 @@
 }
 
 
-@inproceedings{hyper2,
-  added-at = {2013-11-25T00:00:00.000+0100},
-  author = {Domke, Justin},
-  biburl = {http://www.bibsonomy.org/bibtex/25fe6cc5e31520f0b4456df9ac449120c/dblp},
+@inproceedings{hyper2, 
+  author = {Domke, Justin}, 
   booktitle = {AISTATS},
-  crossref = {conf/aistats/2012},
-  editor = {Lawrence, Neil D. and Girolami, Mark A.},
-  ee = {http://jmlr.csail.mit.edu/proceedings/papers/v22/domke12.html},
-  interhash = {e58681bab10cf3e76d20b51db2d0dc1c},
-  intrahash = {5fe6cc5e31520f0b4456df9ac449120c},
-  keywords = {dblp},
   pages = {318-326},
-  publisher = {JMLR.org},
-  series = {JMLR Proceedings},
-  timestamp = {2016-04-09T11:41:26.000+0200},
   title = {Generic Methods for Optimization-Based Modeling.},
-  url = {http://dblp.uni-trier.de/db/journals/jmlr/jmlrp22.html\#Domke12},
   volume = 22,
   year = 2012
 }
@@ -54,19 +40,24 @@
   author={Nystrup, Peter and Boyd, Stephen and Lindstr{\"o}m, Erik and Madsen, Henrik},
   journal={Annals of Operations Research},
   pages={1--27},
-  year={2017},
-  publisher={Springer}
+  year={2017}, 
 }
+
 
 @article{ard,
   title={Automatic Relevance Determination For Deep Generative Models},
   author={Karaletsos, Theofanis and R{\"a}tsch, Gunnar},
-  journal={arXiv preprint arXiv:1505.07765},
+  journal={stat},
+  volume={1050},
+  pages={26},
   year={2015}
 }
 
+
 @unpublished{pyfos,
-  url = {https://svn.code.sf.net/p/mlalgorithms/\\code/Group074/Bakhteev2017Hypergrad/code/}
+  title={pyfos: a library for hyperparameter optimization},
+  author={Bakhteev, Oleg},
+  url = {https://git.io/fjZks}
 }
 
 
@@ -78,7 +69,6 @@
   number={1-2},
   pages={21--43},
   year={2018},
-  publisher={Springer}
 }
 
 @article{bayes_constr,
@@ -87,28 +77,34 @@
   journal={Statistica Sinica},
   pages={1043--1062},
   year={2010},
-  publisher={JSTOR}
 }
 
 
-@article{hyper_mad,
-  title={DrMAD: Distilling Reverse-Mode Automatic Differentiation for Optimizing Hyperparameters of Deep Neural Networks},
+
+
+@inproceedings{hyper_mad,
+  title={DrMAD: distilling reverse-mode automatic differentiation for optimizing hyperparameters of deep neural networks},
   author={Fu, Jie and Luo, Hongyin and Feng, Jiashi and Low, Kian Hsiang and Chua, Tat-Seng},
-  journal={arXiv preprint arXiv:1601.00917},
-  year={2016}
+  booktitle={Proceedings of the Twenty-Fifth International Joint Conference on Artificial Intelligence},
+  pages={1469--1475},
+  year={2016},
 }
+
 @inproceedings{hyper_hoag,
   title={Hyperparameter optimization with approximate gradient},
   author={Pedregosa, Fabian},
-  booktitle={Proceedings of the 33rd International Conference on Machine Learning},
-  year={2016}
+  booktitle={Proceedings of the 33rd International Conference on International Conference on Machine Learning},
+  volume={48},
+  pages={737--746},
+  year={2016}, 
 }
 
-@article{hyper_greed,
+@inproceedings{hyper_greed,
   title={Scalable gradient-based tuning of continuous regularization hyperparameters},
   author={Luketina, Jelena and Berglund, Mathias and Greff, Klaus and Raiko, Tapani},
-  journal={arXiv preprint arXiv:1511.06727},
-  year={2015}
+  booktitle={International Conference on Machine Learning},
+  pages={2952--2960},
+  year={2016}
 }
 
 @inproceedings{expensive,
@@ -120,16 +116,11 @@
   title     = {Fast and Accurate Support Vector Machines on Large Scale Systems},
   booktitle = {2015 {IEEE} International Conference on Cluster Computing, {CLUSTER}
                2015, Chicago, IL, USA, September 8-11, 2015},
-  pages     = {110--119},
-  crossref  = {DBLP:conf/cluster/2015},
-  url       = {http://dx.doi.org/10.1109/CLUSTER.2015.26},
-  doi       = {10.1109/CLUSTER.2015.26},
-  timestamp = {Wed, 27 Apr 2016 17:41:15 +0200},
-  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/cluster/VishnuNHKH15},
-  bibsource = {dblp computer science bibliography, http://dblp.org}
+  year={2015},
+  pages     = {110--119}
 }
 
-@Article{expensive2,
+@article{expensive2,
 author="Krstajic, Damjan
 and Buturovic, Ljubomir J.
 and Leahy, David E.
@@ -140,42 +131,22 @@ year="2014",
 volume="6",
 number="1",
 pages="1--15",
-abstract="We address the problem of selecting and assessing classification and regression models using cross-validation. Current state-of-the-art methods can yield models with high variance, rendering them unsuitable for a number of practical applications including QSAR. In this paper we describe and evaluate best practices which improve reliability and increase confidence in selected models. A key operational component of the proposed methods is cloud computing which enables routine use of previously infeasible approaches.",
-issn="1758-2946",
-doi="10.1186/1758-2946-6-10",
-url="http://dx.doi.org/10.1186/1758-2946-6-10"
 }
 
-
-@misc{bias,
-           title = {Full versus incomplete cross-validation: measuring the impact of imperfect separation between training and test sets in prediction error estimation},
-        abstract = {In practical applications of supervised statistical learning the separation of the training and test data is often violated through performing one or several analysis steps prior to estimating the prediction error by cross-validation (CV) procedures. We refer to such practices as incomplete CV. For the special case of preliminary variable selection in high-dimensional microarray data the corresponding error estimate is well known to be strongly downwardly biased, resulting in over-optimistic conclusions regarding prediction accuracy of the fitted models. However, while other data preparation steps may also be affected by these types of problems, their impact on error estimation is far less acknowledged in the literature. In this paper we shed light on these issues. We present a new measure quantifying the impact of incomplete CV that is based on the ratio between the errors estimated by incomplete CV and by a formally correct "full CV." The new measure is illustrated through applications to several low- and high-dimensional biomedical data sets  and various data preparation steps including preliminary variable selection, choice of tuning parameters, normalization of gene expression microarray data, and imputation of missing values. It may be used in biometrical applications to determine whether specific data preparation steps can be safely performed as preliminary steps before running the CV procedure, or if they should be repeatedly trained in each CV iteration.},
-          series = {tech},
-          author = {Roman Hornung and Christoph Bernau and Caroline Truntzer and Thomas Stadler and Anne-Laure Boulesteix},
-         keyword = {Cross-validation, Over-optimism, Good practice, Error estimation, Practical guidelines, Supervised learning},
-            year = {2014},
-          volume = {159},
-}
 
 @article{bias2,
  author = {Bengio, Yoshua and Grandvalet, Yves},
  title = {No Unbiased Estimator of the Variance of K-Fold Cross-Validation},
- journal = {Journal of machine learning research},
- issue_date = {12/1/2004},
+ journal = {Journal of machine learning research}, 
  volume = {5},
  month ={dec},
  year = {2004},
- issn = {1532-4435},
  pages = {1089--1105},
- numpages = {17},
- acmid = {1044695},
- publisher = {JMLR.org},
 } 
 
 @article{cv_ms,
 author = "Arlot, Sylvain and Celisse, Alain",
 doi = "10.1214/09-SS054",
-fjournal = "Statistics Surveys",
 journal = "Statistics Surveys",
 pages = "40--79",
 publisher = "The American Statistical Association, the Bernoulli Society, the Institute of Mathematical Statistics, and the Statistical Society of Canada",
@@ -197,28 +168,19 @@ year = "2010"
  author = {Hoffman, Matthew D. and Blei, David M. and Wang, Chong and Paisley, John},
  title = {Stochastic Variational Inference},
  journal = {Journal of machine learning research},
- issue_date = {January 2013},
  volume = {14},
  number = {1},
  month = {may},
  year = {2013},
- issn = {1532-4435},
  pages = {1303--1347},
- numpages = {45},
- url = {http://dl.acm.org/citation.cfm?id=2502581.2502622},
- acmid = {2502622},
- publisher = {JMLR.org},
- keywords = {Bayesian inference, Bayesian nonparametrics, stochastic optimization, topic models, variational inference},
 } 
 
-@incollection{nips,
+@inproceedings{nips,
 title = {Practical Variational Inference for Neural Networks},
 author = {Graves, Alex},
 booktitle = {Advances in Neural Information Processing Systems 24},
-editor = {J. Shawe-Taylor and R. S. Zemel and P. L. Bartlett and F. Pereira and K. Q. Weinberger},
 pages = {2348--2356},
 year = {2011},
-publisher = {Curran Associates, Inc.}
 }
 
 @article{random1,
@@ -253,26 +215,14 @@ publisher = {Curran Associates, Inc.}
   booktitle={International Conference on Learning and Intelligent Optimization},
   pages={507--523},
   year={2011},
-  organization={Springer}
 }
 
 
 
 @inproceedings{varmc,
-  added-at = {2015-07-05T00:00:00.000+0200},
   author = {Salimans, Tim and Kingma, Diederik P. and Welling, Max},
-  biburl = {http://www.bibsonomy.org/bibtex/235fbdcbeb70cb01ad14472f9103bf546/dblp},
   booktitle = {ICML},
-  crossref = {conf/icml/2015},
-  editor = {Bach, Francis R. and Blei, David M.},
-  ee = {http://jmlr.org/proceedings/papers/v37/salimans15.html},
-  interhash = {ac857f47992f033774f0fe6f2612d89e},
-  intrahash = {35fbdcbeb70cb01ad14472f9103bf546},
-  keywords = {dblp},
   pages = {1218-1226},
-  publisher = {JMLR.org},
-  series = {JMLR Proceedings},
-  timestamp = {2015-07-07T11:37:54.000+0200},
   title = {Markov Chain Monte Carlo and Variational Inference: Bridging the Gap.},
   volume = 37,
   year = 2015
@@ -285,10 +235,8 @@ publisher = {Curran Associates, Inc.}
 	booktitle = {Journal of Machine Learning Research - Proceedings Track}, 
 	pages = {412-419},
 	year = {2007},  
-	    journal = {Proceedings of the Eleventh International Conference on Artificial Intelligence and Statistics (AISTATS-07)}, 
-	    language={english},
+	    journal = {Proceedings of the Eleventh International Conference on Artificial Intelligence and Statistics (AISTATS-07)}, 	  
 	    volume = {2}, 
-	    editor = {Marina Meila and Xiaotong Shen}, 
 	    
 	    
    }
@@ -309,23 +257,16 @@ publisher = {Curran Associates, Inc.}
                Montreal, Quebec, Canada},
   pages     = {3104--3112},
   year      = {2014},
-  crossref  = {DBLP:conf/nips/2014},
-  timestamp = {Wed, 10 Dec 2014 21:34:12 +0100},
-  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/nips/SutskeverVL14},
-  bibsource = {dblp computer science bibliography, http://dblp.org}
 }
 
 
-@ARTICLE{theano,
-   author = {{Theano Development Team}},
-    title = "{Theano: A {Python} framework for fast computation of mathematical expressions}",
-  journal = {arXiv e-prints},
-   volume = {abs/1605.02688},
- primaryClass = "cs.SC",
- keywords = {Computer Science - Symbolic Computation, Computer Science - Learning, Computer Science - Mathematical Software},
-     year = {2016},
-    month = {may},
-      url = {http://arxiv.org/abs/1605.02688},
+@inproceedings{theano,
+  title={Theano: a CPU and GPU math expression compiler},
+  author={Bergstra, James and Breuleux, Olivier and Bastien, Fr{\'e}d{\'e}ric and Lamblin, Pascal and Pascanu, Razvan and Desjardins, Guillaume and Turian, Joseph and Warde-Farley, David and Bengio, Yoshua},
+  booktitle={Proceedings of the Python for scientific computing conference (SciPy)},
+  volume={4},
+  number={3},
+  year={2010},
 }
 
 
@@ -372,7 +313,7 @@ language = {english},
 
 
 
-@dscthesis{strijov_dsc,
+@misc{strijov_dsc,
  author = {Strijov, V. V.},
   title = {Model genetation and selection for regression and classification problems (DSc Thesis)},
   school = {Russian Academy of Sciences, Computing Center},
