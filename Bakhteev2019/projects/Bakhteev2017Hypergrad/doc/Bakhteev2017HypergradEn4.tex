@@ -38,13 +38,8 @@
 %\date{}
 %\maketitle
 
-% \begin{center}
-% {O.\,Y.~Bakhteev\footnote{Moscow Institute of Physics and Technology, bakhteev@phystech.edu},
-% V.\,V.~Strijov$^1$\footnote{FRCCSC of the Russian Academy of Sciences, strijov@ccas.ru}} % основной список авторов, выводимый в оглавление
-% \end{center}
+\title{Comprehensive analysis of gradient-based hyperparameter optimization algorithms\thanks{The research was made possible by Government of the Russian Federation (Agreement No. 05.Y09.21.0018)  and FASIE project No. 44116. This paper contains results of the project Statistical methods of machine learning, which is carried out within the framework of the Program "Center of Big Data Storage and Analysis" of the National Technology Initiative Competence Center. It is supported by the Ministry of Science and Higher Education of the Russian Federation according to the agreement between the M.V. Lomonosov Moscow State University and the Foundation of project support of the National Technology Initiative from 11.12.2018, No 13/1251/2018.}}% \tnoteref{label1}}
 
-\title{Comprehensive analysis of gradient-based hyperparameter optimization algorithms\thanks{The research was made possible by Government of the Russian Federation (Agreement № 05.Y09.21.0018)  and FASIE project № 44116. This paper contains results of the project Statistical methods of machine learning, which is carried out within the framework of the Program "Center of Big Data Storage and Analysis" of the National Technology Initiative Competence Center. It is supported by the Ministry of Science and Higher Education of the Russian Federation according to the agreement between the M.V. Lomonosov Moscow State University and the Foundation of project support of the National Technology Initiative from 11.12.2018, No 13/1251/2018.}}% \tnoteref{label1}}
-%\tnotetext[label1]{The research was made possible by Government of the Russian Federation (Agreement № 05.Y09.21.0018)}
 
 \author{O.\,Y.~Bakhteev        \and
         V.\,V.~Strijov %etc.
@@ -116,7 +111,6 @@ The experimental results show that the gradient-based algorithms are significant
 
 \begin{table}
 \footnotesize
-% Алгоритм & Тип алгоритм & Время & Плюсы & Минусы 
 
 \begin{tabularx}{\textwidth}{|p{2cm}|p{2cm}|X|X|}
 \hline
@@ -188,7 +182,7 @@ For both classification~\eqref{eq:cl} and regression~\eqref{eq:reg} problems def
 \end{equation}
 where  $\mathbf{A}^{-1} = \text{diag}[\alpha_1, \dots, \alpha_u]^{-1}$ is the covariance  diagonal matrix. The hypotheses~\eqref{eq:reg},~\eqref{eq:cl} and~\eqref{eq:prior} 	do	not	contradict	each other since the normal distribution is unbounded~\cite{bayes_constr}.  
 
-In order to describe the general scheme of model optimization procedure denote a vector of model parameters by $\mathbf{w}$. Denote by $\boldsymbol{\theta} \in \mathbb{R}^s$ a vector of parameters of model parameters distribution. In the simple case the $\boldsymbol{\theta}$ is a concatenation of vectors of parameters for multiple model instances. The details of $\boldsymbol{\theta}$ construction are given in the model selection methods description. 
+In order to describe the general scheme of the model optimization procedure denote a vector of model parameters by $\mathbf{w}$. Denote by $\boldsymbol{\theta} \in \mathbb{R}^s$ a vector of parameters of the model parameters distribution. In the simple case $\boldsymbol{\theta}$ is a concatenation of vectors of parameters of multiple model instances. The details of $\boldsymbol{\theta}$ construction are given in the model selection methods description below. 
 
 Introduce an example of hyperparameter optimization using the coherent Bayesian inference. Optimize model parameters $\boldsymbol{\theta} = \mathbf{w}$ according to the model parameter distribution $p(\mathbf{w}|\mathbf{X}, \mathbf{y}, \mathbf{A})$:
 \begin{equation}
@@ -210,9 +204,9 @@ Suppose $p(\mathbf{A})$ is uniform on a large interval. The hyperparameter optim
 
 
 %\begin{figure}
-%  \includegraphics[width=0.8\linewidth]{slide_plots/hyper.png}
+%  \includegraphics[width=0.8\linewidth]{slide_hyper.png}
 %\label{fig:hyper}
-%    \caption{Marginal likelihood dependency on hyperparameter $\alpha$ disrtribution. TODO: переделать}
+%    \caption{Marginal likelihood dependency on hyperparameter $\alpha$ disrtribution.}
  
    
 %    \end{figure}
@@ -327,13 +321,11 @@ The general scheme of the hyperparameter optimization is the following:
 \item set $\mathbf{A} = \hat{\mathbf{A}}$.
 \end{enumerate}
 
-One of the methods the problem~\eqref{eq:optim} solution is to use a gradient descent not only for the parameters $\boldsymbol{\theta}$, but also for the hyperparameters $\mathbf{A}$. 
+One of the methods for the problem~\eqref{eq:optim} solution is to use a gradient descent not only for the parameters $\boldsymbol{\theta}$, but also for the hyperparameters $\mathbf{A}$. 
 The exact gradient calculation $\nabla_{\mathbf{A}} Q( T^\eta(\boldsymbol{\theta}_0, \mathbf{A}))$ is intractable because of the inner optimization operator $T$. Therefore the number of approximated solutions were presented. Their main properties are listed in Table~\ref{table:algo_descr2}. An example of the parameter and hyperparameter update with different hyperparameter optimization algorithms is illustrated in Fig.~\ref{fig:traj}.
 
 \begin{table}
 \small
-
-% Алгоритм & Тип алгоритм & Время & Плюсы & Минусы 
 
 \begin{tabularx}{\textwidth}{|X|X|X|X|}
 \hline
@@ -450,7 +442,7 @@ For the neural network models we set all the hyperparameters equal for each laye
 
 \begin{figure*}[tbh!]
     \centering
-    \includegraphics[width=0.5\linewidth]{plots/Fig_traj2.eps}
+    \includegraphics[width=0.5\linewidth]{Fig_traj2.eps}
 
     \caption{An example of parameter update trajectories. The color displays the value of the validation function $Q$. Greedy algorithm optimizes hyperparameter during the parameter optimization, therefore it has the light blue trajectory between the optimized green trajectory of HOAG algorithm and the dark blue trajectory of parameters without hyperparameter optimization. DrMAD uses a linearized dashed parameter trajectory during hyperparameter optimization procedure.  }
     \label{fig:traj}
@@ -587,11 +579,11 @@ HOAG & ~\eqref{eq:elbo} &  -280061.6 & 24.0 $\pm$ 0.0  & 0.981 & 0.943 & 0.819\\
     \begin{figure*}
 
     \begin{subfloat}[]{
-    \includegraphics[width=0.5\linewidth]{plots/Fig_poly_cv2.pdf}
+    \includegraphics[width=0.5\linewidth]{Fig_poly_cv2.pdf}
     }
     \end{subfloat}
     \begin{subfloat}[]{
-    \includegraphics[width=0.5\linewidth]{plots/Fig_poly_var2.pdf}
+    \includegraphics[width=0.5\linewidth]{Fig_poly_var2.pdf}
     }
     \end{subfloat}
 
@@ -605,7 +597,7 @@ HOAG & ~\eqref{eq:elbo} &  -280061.6 & 24.0 $\pm$ 0.0  & 0.981 & 0.943 & 0.819\\
 
     \begin{figure*}
 
-    \includegraphics[width=\linewidth]{plots/Fig_wisdm2.eps}
+    \includegraphics[width=\linewidth]{Fig_wisdm2.eps}
 \caption{WISDM,  best validation value $\hat{Q}$ and RMSE  for cross-validation (left) and evidence lower bound (right)}    
 \label{fig:wisdm}
     
@@ -614,7 +606,7 @@ HOAG & ~\eqref{eq:elbo} &  -280061.6 & 24.0 $\pm$ 0.0  & 0.981 & 0.943 & 0.819\\
 
     \begin{figure*}
 
-    \includegraphics[width=\linewidth]{plots/Fig_mnist2.eps}
+    \includegraphics[width=\linewidth]{Fig_mnist2.eps}
 
     \caption{MNIST, best validation value  $\hat{Q}$ and Accuracy  for cross-validation (left) and evidence lower bound (right)}
     \label{fig:mnist}
@@ -622,7 +614,7 @@ HOAG & ~\eqref{eq:elbo} &  -280061.6 & 24.0 $\pm$ 0.0  & 0.981 & 0.943 & 0.819\\
 
     \begin{figure*}
 
-    \includegraphics[width=\linewidth]{plots/Fig_noise2.pdf}
+    \includegraphics[width=\linewidth]{Fig_noise2.pdf}
 
     \caption{MNIST, Model accuracy with noise in the Test dataset. The hyperparameters were optimized with evidence lower bound criterion.}
     \label{fig:noise}
